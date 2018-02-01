@@ -1,0 +1,888 @@
+<ion-content>
+  <div class="home-head-layer">
+    <!-- menu and search container -->
+    <div class="top-nav-header">
+      <div text-left>
+        <img class="menu-icon" src="assets/img/icon-menu-white.png">
+      </div>
+      <div text-right>
+        <img class="search-icon" src="assets/img/icon-search-white.png">
+      </div>
+    </div>
+
+    <!-- user-card -->
+    <div class="user-card-container">
+      <ion-card>
+        <!-- user profile image -->
+        <div class="user-card" id="usercardscroll">
+          <div text-center class="image-circle-box" id="imgcirclescroll">
+            <ion-img text-center class="user-card-image" id="imgscroll" src="assets/img/img_userpic.png"></ion-img>
+          </div>
+        </div>
+
+        <!-- name and position of the user -->
+        <ion-card-content>
+          <p text-center class="user-name-text">Kohei Bansho</p>
+          <p text-center class="user-position-text">Digital Sales Senior Manager</p>
+        </ion-card-content>
+
+        <!--user input text box -->
+        <div text-center class="content-box" id="sticky-anchor">
+          <div class="text-button-group">
+            <div class="input-arrow">
+              <div class="arrow-up"></div>
+            </div>
+            <div class="input-box">
+              <div class="input-box-text-div">
+                <input type="text" class="input-box-text" placeholder="今の気持ちは？">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--explantory notes -->
+        <div text-center class="img_explanatory-notes-div">
+          <img src="assets/img/img_explanatory-notes.png">
+        </div>
+
+        <!--calendar design-->
+        <div class="calendar-body">
+          <ion-grid>
+            <!-- weekday -->
+            <ion-row class="calendar-weekday">
+              <ion-col class="weekday" col-1><div class="weekday-name">Sun</div></ion-col>
+              <ion-col class="weekday" col-1><div class="weekday-name">Mon</div></ion-col>
+              <ion-col class="weekday" col-1><div class="weekday-name">Tue</div></ion-col>
+              <ion-col class="weekday" col-1><div class="weekday-name">Wed</div></ion-col>
+              <ion-col class="weekday" col-1><div class="weekday-name">Thu</div></ion-col>
+              <ion-col class="weekday" col-1><div class="weekday-name">Fri</div></ion-col>
+              <ion-col class="weekday" col-1><div class="weekday-name">Sat</div></ion-col>
+            </ion-row>
+
+            <!-- day -->
+            <ion-row class="calendar-date">
+              <ion-col col-1 class="day-number" *ngFor="let day of daysInThisCalendar" (click)="show(day)">
+                      <div class="day-style" [ngClass]="{ currentDate: day.isToday,
+                                                soHappy:day.isSoHappy,
+                                                happy:day.isHappy,
+                                                normal:day.isNormal,
+                                                bad:day.isBad,
+                                                soBad:day.isSoBad}">
+                        <div class="day-text">{{day.day}}</div>
+                      </div>
+
+              </ion-col>
+
+            </ion-row>
+          </ion-grid>
+        </div>
+
+        <!-- three tabs: follower,support and dia -->
+        <div class="segment-tab" id="sticky">
+          <ion-segment [(ngModel)]="appType">
+            <ion-segment-button value="follower-tab">
+              <div class="tab-count">16</div>
+              <div class="tab-name">フォロー</div>
+              <div class="border"></div>
+            </ion-segment-button>
+
+            <ion-segment-button value="support-tab">
+              <div class="new-badge"><ion-badge>10</ion-badge></div>
+              <div class="tab-count" text-center><div class="support-new-count">23</div></div>
+              <div class="tab-name" text-center>応援</div>
+              <div class="border"></div>
+            </ion-segment-button>
+
+            <ion-segment-button value="dia-tab">
+              <div class="new-badge"><ion-badge>10</ion-badge></div>
+              <div text-center class="tab-count">
+                <img class="img-diamond-triangle" src="assets/img/img_diamond_triangle.png">
+                <div text-center class="tab-dia-count">20</div>
+              </div>
+              <div class="tab-name">ダイヤ</div>
+              <div class="border"></div>
+            </ion-segment-button>
+          </ion-segment>
+        </div>
+      </ion-card>
+    </div>
+  </div>
+
+  <!-- tab layer -->
+  <div class="bottom-layer">
+
+    <!-- follow_tab data -->
+      <ng-template [ngIf]="appType==='follower-tab'">
+        <!-- follower -->
+        <div class="follower-container">
+          <!-- follower box -->
+          <div class="follower">
+            <div class="follower-label">
+              フォロー中の人（16人）
+            </div>
+
+            <div class="follower-box">
+              <div class="top-box">
+                <div id="content" class="imgcorner">
+                  <img src="assets/img/corner.png">
+                </div>
+                <div class="follower-user">
+                  <div class="follower-img">
+                    <img class="img img-circle" src="assets/img/img_userpic.png">
+                  </div>
+
+                  <div class="follower-data">
+                    <div class="follower-details">
+                      <div class="follower-name">
+                        Akane Osada
+                      </div>
+                    </div>
+                    <div class="follower-position-details">
+                      <div class="follower-position">
+                        Consultant
+                      </div>
+                    </div>
+                    <div class="follower-action">
+                      <div class="follower-btn-div">
+                        <button class="follow-btn">フォロー中</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="follow-input-box-div">
+                <div class="text-button-group">
+                  <div class="follow-input-arrow">
+                    <div class="arrow-up-left"></div>
+                  </div>
+                  <div class="input-box">
+                    <div class="input-box-text-div">
+                      <input type="text" class="input-box-text" placeholder="ここにユーザーが入力したコメントを表示します">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="img_explanatory-notes-div">
+                <img src="assets/img/img_explanatory-notes.png">
+              </div>
+
+              <!--calendar design-->
+              <div class="calendar-body">
+                <ion-grid>
+                  <!-- weekday -->
+                  <ion-row class="calendar-weekday">
+                    <ion-col class="weekday" col-1><div class="weekday-name">Sun</div></ion-col>
+                    <ion-col class="weekday" col-1><div class="weekday-name">Mon</div></ion-col>
+                    <ion-col class="weekday" col-1><div class="weekday-name">Tue</div></ion-col>
+                    <ion-col class="weekday" col-1><div class="weekday-name">Wed</div></ion-col>
+                    <ion-col class="weekday" col-1><div class="weekday-name">Thu</div></ion-col>
+                    <ion-col class="weekday" col-1><div class="weekday-name">Fri</div></ion-col>
+                    <ion-col class="weekday" col-1><div class="weekday-name">Sat</div></ion-col>
+                  </ion-row>
+
+                  <!-- day -->
+                  <ion-row class="calendar-date">
+                    <ion-col col-1 class="day-number" *ngFor="let day of daysInThisCalendar" (click)="show(day)">
+                      <div class="day-style" [ngClass]="{ currentDate: day.isToday,
+																							soHappy:day.isSoHappy,
+																							happy:day.isHappy,
+																							normal:day.isNormal,
+																							bad:day.isBad,
+																							soBad:day.isSoBad}">
+                        <div class="day-text">{{day.day}}</div>
+                      </div>
+
+                    </ion-col>
+
+                  </ion-row>
+                </ion-grid>
+              </div>
+
+              <div class="speaker-div-pink">
+                <button type="button" class="speakerpink"  id="div1">
+                  <img  class="speakericon-super" src="assets//img/icon_megaphone_super.png">
+                  <span class="icon-speaker-text">超応援 !!</span>
+                </button>
+              </div>
+
+              <div class="speaker-div-green">
+                <button type="button" class="speakergreen" id="div2">
+                  <img  class="speakericon" src="assets/img/icon_megaphone_normal.png">
+                  <span class="icon-speaker-text">応援 !</span>
+                </button>
+              </div>
+
+              <div class="speaker-div-gray">
+                <button type="button" class="speakergray"  id="div3">
+                  <img  class="speakericon" src="assets/img/icon_megaphone_secret.png">
+                  <span class="icon-speaker-text">こっそり応援</span>
+                </button>
+              </div>
+              <div class="supportbuttondiv" id="clickme">
+                <button class="supportbutton" id="supportbtn">
+											<span>
+												<img src="assets/img/icon_megaphone_white.png" class="icon_megaphone_white">
+												<span class="supportbutton-text">応援する</span>
+											</span>
+                </button>
+              </div>
+
+              <div class="closebuttondiv" id="closeme">
+                <button type="button" id="closebtn" class="closesupport">
+                  <img  src="assets/img/icon_delete_white.png" class="icon-close-white">
+                </button>
+              </div>
+            </div>
+
+            <div class="follower-box">
+              <div class="top-box">
+                <div id="content" class="imgcorner">
+                  <img src="assets/img/corner.png">
+                </div>
+                <div class="follower-user">
+                  <div class="follower-img">
+                    <img class="img img-circle" src="assets/img/img_userpic.png">
+                  </div>
+
+                  <div class="follower-data">
+                    <div class="follower-details">
+                      <div class="follower-name">
+                        Akane Osada
+                      </div>
+                    </div>
+                    <div class="follower-position-details">
+                      <div class="follower-position">
+                        Consultant
+                      </div>
+                    </div>
+                    <div class="follower-action">
+                      <div class="follower-btn-div">
+                        <button class="follow-btn">フォロー中</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="follow-input-box-div">
+                <div class="text-button-group">
+                  <div class="follow-input-arrow">
+                    <div class="arrow-up-left"></div>
+                  </div>
+                  <div class="input-box">
+                    <div class="input-box-text-div">
+                      <input type="text" class="input-box-text" placeholder="ここにユーザーが入力したコメントを表示します">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="img_explanatory-notes-div">
+                <img src="assets/img/img_explanatory-notes.png">
+              </div>
+
+              <!--calendar design-->
+              <div class="calendar-body">
+                <ion-grid>
+                  <!-- weekday -->
+                  <ion-row class="calendar-weekday">
+                    <ion-col class="weekday" col-1><div class="weekday-name">Sun</div></ion-col>
+                    <ion-col class="weekday" col-1><div class="weekday-name">Mon</div></ion-col>
+                    <ion-col class="weekday" col-1><div class="weekday-name">Tue</div></ion-col>
+                    <ion-col class="weekday" col-1><div class="weekday-name">Wed</div></ion-col>
+                    <ion-col class="weekday" col-1><div class="weekday-name">Thu</div></ion-col>
+                    <ion-col class="weekday" col-1><div class="weekday-name">Fri</div></ion-col>
+                    <ion-col class="weekday" col-1><div class="weekday-name">Sat</div></ion-col>
+                  </ion-row>
+
+                  <!-- day -->
+                  <ion-row class="calendar-date">
+                    <ion-col col-1 class="day-number" *ngFor="let day of daysInThisCalendar" (click)="show(day)">
+                      <div class="day-style" [ngClass]="{ currentDate: day.isToday,
+																							soHappy:day.isSoHappy,
+																							happy:day.isHappy,
+																							normal:day.isNormal,
+																							bad:day.isBad,
+																							soBad:day.isSoBad}">
+                        <div class="day-text">{{day.day}}</div>
+                      </div>
+
+                    </ion-col>
+
+                  </ion-row>
+                </ion-grid>
+              </div>
+
+              <div class="speaker-div-pink">
+                <button type="button" class="speakerpink"  id="div1">
+                  <img  class="speakericon-super" src="assets//img/icon_megaphone_super.png">
+                  <span class="icon-speaker-text">超応援 !!</span>
+                </button>
+              </div>
+
+              <div class="speaker-div-green">
+                <button type="button" class="speakergreen" id="div2">
+                  <img  class="speakericon" src="assets/img/icon_megaphone_normal.png">
+                  <span class="icon-speaker-text">応援 !</span>
+                </button>
+              </div>
+
+              <div class="speaker-div-gray">
+                <button type="button" class="speakergray"  id="div3">
+                  <img  class="speakericon" src="assets/img/icon_megaphone_secret.png">
+                  <span class="icon-speaker-text">こっそり応援</span>
+                </button>
+              </div>
+              <div class="supportbuttondiv" id="clickme">
+                <button class="supportbutton" id="supportbtn">
+											<span>
+												<img src="assets/img/icon_megaphone_white.png" class="icon_megaphone_white">
+												<span class="supportbutton-text">応援する</span>
+											</span>
+                </button>
+              </div>
+
+              <div class="closebuttondiv" id="closeme">
+                <button type="button" id="closebtn" class="closesupport">
+                  <img  src="assets/img/icon_delete_white.png" class="icon-close-white">
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+
+    <!-- support_tab data -->
+    <ng-template [ngIf]="appType==='support-tab'">
+    <!-- support user data -->
+      <div class="support-container">
+        <div class="new-support-user-container">
+          <div class="date-div">
+            <span class="date-text">YYYY年MM月DD日</span>
+          </div>
+          <div class="support-user-container">
+            <div class="support-user-box">
+              <div class="new-image">
+                <img class="icon-new-image" src="assets/img/img_new.png">
+              </div>
+
+              <div class="support-user">
+                <div class="support-user-image">
+                  <img class="img img-circle" src="assets/img/img_userpic.png">
+                </div>
+
+                <div class="support-user-data">
+                  <div class="support-text-box-user-name">
+                    <div class="support-user-name">
+                      <p class="support-user-text">
+                        匿名社員さんからこっそり応援されました！
+                      </p>
+                    </div>
+                  </div>
+                  <div class="support-text-box-user-position">
+                    <div class="support-user-position">
+                      <p class="support-position-text">
+                        <img class="icon_megaphone_normal_circle" src="assets/img/icon_megaphone_normal_circle.png">
+                        <span class="support-time">HH:MI</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="support-user-container">
+            <div class="support-user-box">
+              <div class="new-image">
+                <img class="icon-new-image" src="assets/img/img_new.png">
+              </div>
+
+              <div class="support-user">
+                <div class="support-user-image">
+                  <img class="img img-circle" src="assets/img/img_userpic.png">
+                </div>
+
+                <div class="support-user-data">
+                  <div class="support-text-box-user-name">
+                    <div class="support-user-name">
+                      <p class="support-user-text">
+                        匿名社員さんからこっそり応援されました！
+                      </p>
+                    </div>
+                  </div>
+                  <div class="support-text-box-user-position">
+                    <div class="support-user-position">
+                      <p class="support-position-text">
+                        <img class="icon_megaphone_normal_circle" src="assets/img/icon_megaphone_secret_circle.png">
+                        <span class="support-time">HH:MI</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="support-user-container">
+            <div class="support-user-box">
+              <div class="new-image">
+                <img class="icon-new-image" src="assets/img/img_new.png">
+              </div>
+
+              <div class="support-user">
+                <div class="support-user-image">
+                  <img class="img img-circle" src="assets/img/img_userpic.png">
+                </div>
+
+                <div class="support-user-data">
+                  <div class="support-text-box-user-name">
+                    <div class="support-user-name">
+                      <p class="support-user-text">
+                        匿名社員さんからこっそり応援されました！
+                      </p>
+                    </div>
+                  </div>
+                  <div class="support-text-box-user-position">
+                    <div class="support-user-position">
+                      <p class="support-position-text">
+                        <img class="icon_megaphone_normal_circle" src="assets/img/icon_megaphone_normal_circle.png">
+                        <span class="support-time">HH:MI</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="support-user-container">
+            <div class="support-user-box">
+              <div class="new-image">
+                <img class="icon-new-image" src="assets/img/img_new.png">
+              </div>
+
+              <div class="support-user">
+                <div class="support-user-image">
+                  <img class="img img-circle" src="assets/img/img_userpic.png">
+                </div>
+
+                <div class="support-user-data">
+                  <div class="support-text-box-user-name">
+                    <div class="support-user-name">
+                      <p class="support-user-text">
+                        匿名社員さんからこっそり応援されました！
+                      </p>
+                    </div>
+                  </div>
+                  <div class="support-text-box-user-position">
+                    <div class="support-user-position">
+                      <p class="support-position-text">
+                        <img class="icon_megaphone_normal_circle" src="assets/img/icon_megaphone_secret_circle.png">
+                        <span class="support-time">HH:MI</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="support-user-container">
+            <div class="support-user-box">
+              <div class="new-image">
+                <img class="icon-new-image" src="assets/img/img_new.png">
+              </div>
+
+              <div class="support-user">
+                <div class="support-user-image">
+                  <img class="img img-circle" src="assets/img/img_userpic.png">
+                </div>
+
+                <div class="support-user-data">
+                  <div class="support-text-box-user-name">
+                    <div class="support-user-name">
+                      <p class="support-user-text">
+                        匿名社員さんからこっそり応援されました！
+                      </p>
+                    </div>
+                  </div>
+                  <div class="support-text-box-user-position">
+                    <div class="support-user-position">
+                      <p class="support-position-text">
+                        <img class="icon_megaphone_normal_circle" src="assets/img/icon_megaphone_super_circle.png">
+                        <span class="support-time">HH:MI</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!--existing -->
+        <div class="exist-support-user-container">
+          <div class="exist-date-div">
+            <span class="exist-date-text">YYYY年MM月DD日</span>
+          </div>
+          <div class="exist-support-user-box-container">
+            <div class="exist-support-user-box">
+              <div class="exist-support-user">
+                <div class="exist-support-user-image">
+                  <img class="img img-circle" src="assets/img/img_userpic.png">
+                </div>
+
+                <div class="exist-support-user-data">
+                  <div class="exist-support-text-box-user-name">
+                    <div class="exist-support-user-name">
+                      <p class="exist-support-user-text">
+                        匿名社員さんからこっそり応援されました！
+                      </p>
+                    </div>
+                  </div>
+                  <div class="exist-support-text-box-user-position">
+                    <div class="exist-support-user-position">
+                      <p class="exist-support-position-text">
+                        <img class="exist-icon_megaphone_normal_circle" src="assets/img/icon_megaphone_normal_circle.png">
+                        <span class="exist-support-time">HH:MI</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="exist-support-user-box-container">
+            <div class="exist-support-user-box">
+              <div class="exist-support-user">
+                <div class="exist-support-user-image">
+                  <img class="img img-circle" src="assets/img/img_userpic.png">
+                </div>
+
+                <div class="exist-support-user-data">
+                  <div class="exist-support-text-box-user-name">
+                    <div class="exist-support-user-name">
+                      <p class="exist-support-user-text">
+                        匿名社員さんからこっそり応援されました！
+                      </p>
+                    </div>
+                  </div>
+                  <div class="exist-support-text-box-user-position">
+                    <div class="exist-support-user-position">
+                      <p class="exist-support-position-text">
+                        <img class="exist-icon_megaphone_normal_circle" src="assets/img/icon_megaphone_normal_circle.png">
+                        <span class="exist-support-time">HH:MI</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="exist-support-user-box-container">
+            <div class="exist-support-user-box">
+              <div class="exist-support-user">
+                <div class="exist-support-user-image">
+                  <img class="img img-circle" src="assets/img/img_userpic.png">
+                </div>
+
+                <div class="exist-support-user-data">
+                  <div class="exist-support-text-box-user-name">
+                    <div class="exist-support-user-name">
+                      <p class="exist-support-user-text">
+                        匿名社員さんからこっそり応援されました！
+                      </p>
+                    </div>
+                  </div>
+                  <div class="exist-support-text-box-user-position">
+                    <div class="exist-support-user-position">
+                      <p class="exist-support-position-text">
+                        <img class="exist-icon_megaphone_normal_circle" src="assets/img/icon_megaphone_normal_circle.png">
+                        <span class="exist-support-time">HH:MI</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="margin-bottom-container">
+
+        </div>
+      </div>
+    </ng-template>
+
+    <!-- dia_tab data -->
+    <ng-template [ngIf]="appType==='dia-tab'">
+      <!-- dia user data -->
+      <div class="support-container">
+        <div class="new-support-user-container">
+          <div class="date-div">
+            <span class="date-text">YYYY年MM月DD日</span>
+          </div>
+          <div class="support-user-container">
+            <div class="support-user-box">
+              <div class="new-image">
+                <img class="icon-new-image" src="assets/img/img_new.png">
+              </div>
+
+              <div class="support-user">
+                <div class="support-user-image">
+                  <img class="img img-circle" src="assets/img/img_userpic.png">
+                </div>
+
+                <div class="support-user-data">
+                  <div class="support-text-box-user-name">
+                    <div class="support-dia-user-name">
+                      <p class="support-dia-user-text">
+                        匿名社員さんから「今日一番良い仕事をした人」に選ばれました！
+                      </p>
+                    </div>
+                  </div>
+                  <div class="support-text-box-user-position">
+                    <div class="support-dia-user-position">
+                      <p class="support-dia-position-text">
+                        <img class="icon_megaphone_normal_circle" src="assets/img/img_diamond_triangle.png">
+                        <span class="dia-support-time">HH:MI</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="support-user-container">
+            <div class="support-user-box">
+              <div class="new-image">
+                <img class="icon-new-image" src="assets/img/img_new.png">
+              </div>
+
+              <div class="support-user">
+                <div class="support-user-image">
+                  <img class="img img-circle" src="assets/img/img_userpic.png">
+                </div>
+
+                <div class="support-user-data">
+                  <div class="support-text-box-user-name">
+                    <div class="support-dia-user-name">
+                      <p class="support-dia-user-text">
+                        匿名社員さんから「今日一番良い仕事をした人」に選ばれました！
+                      </p>
+                    </div>
+                  </div>
+                  <div class="support-text-box-user-position">
+                    <div class="support-dia-user-position">
+                      <p class="support-dia-position-text">
+                        <img class="icon_megaphone_normal_circle" src="assets/img/img_diamond_triangle.png">
+                        <span class="dia-support-time">HH:MI</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="support-user-container">
+            <div class="support-user-box">
+              <div class="new-image">
+                <img class="icon-new-image" src="assets/img/img_new.png">
+              </div>
+
+              <div class="support-user">
+                <div class="support-user-image">
+                  <img class="img img-circle" src="assets/img/img_userpic.png">
+                </div>
+
+                <div class="support-user-data">
+                  <div class="support-text-box-user-name">
+                    <div class="support-dia-user-name">
+                      <p class="support-dia-user-text">
+                        匿名社員さんから「今日一番良い仕事をした人」に選ばれました！
+                      </p>
+                    </div>
+                  </div>
+                  <div class="support-text-box-user-position">
+                    <div class="support-dia-user-position">
+                      <p class="support-dia-position-text">
+                        <img class="icon_megaphone_normal_circle" src="assets/img/img_diamond_triangle.png">
+                        <span class="dia-support-time">HH:MI</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="support-user-container">
+            <div class="support-user-box">
+              <div class="new-image">
+                <img class="icon-new-image" src="assets/img/img_new.png">
+              </div>
+
+              <div class="support-user">
+                <div class="support-user-image">
+                  <img class="img img-circle" src="assets/img/img_userpic.png">
+                </div>
+
+                <div class="support-user-data">
+                  <div class="support-text-box-user-name">
+                    <div class="support-dia-user-name">
+                      <p class="support-dia-user-text">
+                        匿名社員さんから「今日一番良い仕事をした人」に選ばれました！
+                      </p>
+                    </div>
+                  </div>
+                  <div class="support-text-box-user-position">
+                    <div class="support-dia-user-position">
+                      <p class="support-dia-position-text">
+                        <img class="icon_megaphone_normal_circle" src="assets/img/img_diamond_triangle.png">
+                        <span class="dia-support-time">HH:MI</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="support-user-container">
+            <div class="support-user-box">
+              <div class="new-image">
+                <img class="icon-new-image" src="assets/img/img_new.png">
+              </div>
+
+              <div class="support-user">
+                <div class="support-user-image">
+                  <img class="img img-circle" src="assets/img/img_userpic.png">
+                </div>
+
+                <div class="support-user-data">
+                  <div class="support-text-box-user-name">
+                    <div class="support-dia-user-name">
+                      <p class="support-dia-user-text">
+                        匿名社員さんから「今日一番良い仕事をした人」に選ばれました！
+                      </p>
+                    </div>
+                  </div>
+                  <div class="support-text-box-user-position">
+                    <div class="support-dia-user-position">
+                      <p class="support-dia-position-text">
+                        <img class="icon_megaphone_normal_circle" src="assets/img/img_diamond_triangle.png">
+                        <span class="dia-support-time">HH:MI</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!--existing -->
+        <div class="exist-support-user-container">
+          <div class="exist-date-div">
+            <span class="exist-date-text">YYYY年MM月DD日</span>
+          </div>
+          <div class="exist-support-user-box-container">
+            <div class="exist-support-user-box">
+              <div class="exist-support-user">
+                <div class="exist-support-user-image">
+                  <img class="img img-circle" src="assets/img/img_userpic.png">
+                </div>
+
+                <div class="exist-support-user-data">
+                  <div class="exist-support-text-box-user-name">
+                    <div class="exist-dia-support-user-name">
+                      <p class="exist-dia-support-user-text">
+                        匿名社員さんから「今日一番良い仕事をした人」に選ばれました！
+                      </p>
+                    </div>
+                  </div>
+                  <div class="exist-support-text-box-user-position">
+                    <div class="exist-dia-support-user-position">
+                      <p class="exist-dia-support-position-text">
+                        <img class="exist-icon_megaphone_normal_circle" src="assets/img/img_diamond_triangle.png">
+                        <span class="exist-dia-support-time">HH:MI</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="exist-support-user-box-container">
+            <div class="exist-support-user-box">
+              <div class="exist-support-user">
+                <div class="exist-support-user-image">
+                  <img class="img img-circle" src="assets/img/img_userpic.png">
+                </div>
+
+                <div class="exist-support-user-data">
+                  <div class="exist-support-text-box-user-name">
+                    <div class="exist-dia-support-user-name">
+                      <p class="exist-dia-support-user-text">
+                        匿名社員さんから「今日一番良い仕事をした人」に選ばれました！
+                      </p>
+                    </div>
+                  </div>
+                  <div class="exist-support-text-box-user-position">
+                    <div class="exist-dia-support-user-position">
+                      <p class="exist-dia-support-position-text">
+                        <img class="exist-icon_megaphone_normal_circle" src="assets/img/img_diamond_triangle.png">
+                        <span class="exist-dia-support-time">HH:MI</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="exist-support-user-box-container">
+            <div class="exist-support-user-box">
+              <div class="exist-support-user">
+                <div class="exist-support-user-image">
+                  <img class="img img-circle" src="assets/img/img_userpic.png">
+                </div>
+
+                <div class="exist-support-user-data">
+                  <div class="exist-support-text-box-user-name">
+                    <div class="exist-dia-support-user-name">
+                      <p class="exist-dia-support-user-text">
+                        匿名社員さんから「今日一番良い仕事をした人」に選ばれました！
+                      </p>
+                    </div>
+                  </div>
+                  <div class="exist-support-text-box-user-position">
+                    <div class="exist-dia-support-user-position">
+                      <p class="exist-dia-support-position-text">
+                        <img class="exist-icon_megaphone_normal_circle" src="assets/img/img_diamond_triangle.png">
+                        <span class="exist-dia-support-time">HH:MI</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="margin-bottom-dia-container">
+
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</ion-content>

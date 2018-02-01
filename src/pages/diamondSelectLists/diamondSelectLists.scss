@@ -1,0 +1,165 @@
+.content{
+  margin-top:0px !important;
+}
+
+.diamondselect-top-head{
+  height:228px !important;
+}
+
+.scroll-content{
+  margin-top:228px !important;
+}
+.diamondselectlist-header{
+  width:100vw;
+  height:228px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px 0 rgba(66, 80, 98, 0.2);
+  overflow-y: hidden;
+  z-index: 3;
+  position: fixed;
+}
+
+/** skip button and text **/
+.top-layer{
+  margin-top:37px;
+  margin-right:16px;
+}
+
+.skip-btn{
+  color:#6095ec;
+  font-weight:600;
+  font-size:14px;
+  background: transparent;
+}
+
+/** diamond img **/
+.diamond-img-layer{
+  margin-top:12px;
+}
+
+.upper-head-text{
+  margin-top:24px;
+  font-weight:600;
+  font-size:16px;
+  text-align:center;
+  color:#464952;
+}
+
+.lower-head-text{
+  margin-top:16px;
+  font-weight:600;
+  font-size:12px;
+  text-algin:center;
+  color:#aab2bd;
+}
+
+.icon-skip{
+  width:16px;
+  height:16px;
+}
+
+.bg-diamond-shine{
+  height:64px;
+  width:160px;
+}
+
+/** content layer **/
+
+.all-user-list{
+  margin-top:16px;
+  background-color:#f6f7fb;
+  padding-bottom:64px;
+}
+
+ul.all-user-list{
+  padding-left: 0px;
+  padding-right: 0px;
+  z-index: 3;
+  padding-top: 16px;
+  -webkit-padding-start: 0px;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+}
+
+ul>li{
+  list-style: none;
+  margin-left: 32px;
+  margin-right: 32px;
+  width:-webkit-fill-available;
+}
+
+.each-user{
+  height: 80px;
+  margin-bottom: 8px;
+}
+
+.user-box{
+  height: 80px;
+  border: 1px solid #ffffff;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 rgba(66, 80, 98, 0.2);
+}
+
+.user-image{
+  float: left;
+  width: 48px;
+  height: 48px;
+}
+
+.user{
+  height: 48px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  margin-right: 14px;
+  margin-left: 16px;
+}
+
+.img-circle{
+  height: 48px;
+  width: 48px;
+}
+
+.user-data{
+  height: 48px;
+  padding-left: 64px;
+}
+
+.text-box-user-name{
+
+}
+
+.user-name-text{
+  padding-top: 8px;
+  margin-left:0px;
+}
+
+.text-box-user-position{
+  margin-top: 8px;
+}
+
+.user-text{
+  height: 14px;
+  color: #464952;
+  text-align: left;
+  font-weight: 600;
+  line-height: 1.2;
+  font-size: 14px;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+}
+
+.position-text{
+  height: 10px;
+  line-height: 1.2;
+  font-weight: 600;
+  text-align: left;
+  color: #aab2bd;
+  font-size: 10px;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+}
+
+.user-position{
+  height: 10px;
+}

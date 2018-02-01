@@ -1,0 +1,45 @@
+
+  <div class="container">
+    <div class="header-layer">
+
+      <div class="header-text">
+        <img src="assets/img/img_welcome.png" class="welcome-text" />
+      </div>
+
+      <div class="rectangle-box">
+        <form (ngSubmit)="login()" class="form-horizontal form-group" role="form">
+          <div class="email-box">
+            <div class="box1">
+              <div class="text-header">
+                <label class="control-label">Email</label>
+              </div>
+              <div class="text-input">
+                <ion-input type="email" [(ngModel)]="users.email" tabindex="1" class="email-input" name="email" value="gic@gicjp.biz" size="auto"></ion-input>
+              </div>
+            </div>
+          </div>
+
+          <div class="password-box">
+            <div class="box2">
+              <div class="text-header">
+                <label class="control-label">Password</label>
+              </div>
+              <div class="text-input">
+                <div class="text-input-password">
+                  <ion-input type="{{eyeState.texBoxType}}" [(ngModel)]="users.password" tabindex="2" class="password-input" name="password" id="password" value="password"></ion-input>
+                </div>
+                <div class="text-icon-eye">
+                  <img id="show_password" (click)="iconClick()" src="{{eyeState.eyeStyle}}" width="19px" height="12px" class="password-show-hide
+										"/>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="button-box">
+            <button type="submit" tabindex="3" class="submit-btn">サインイン</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

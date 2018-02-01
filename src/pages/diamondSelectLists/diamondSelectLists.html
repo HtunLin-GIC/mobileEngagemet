@@ -1,0 +1,52 @@
+<ion-header class="diamondselect-top-head">
+  <div class="diamondselectlist-header">
+    <div text-right class="top-layer">
+      <img class="icon-skip" src="assets/img/icon_skip.png"/>
+      <button clear class="skip-btn">スキップ</button>
+    </div>
+
+    <div text-center class="diamond-img-layer">
+      <img class="bg-diamond-shine" src="assets/img/bg_diamond_shine.png"/>
+    </div>
+
+    <div text-center class="upper-head-text">
+      今日一番良い仕事をした人は？
+    </div>
+    <div text-center class="lower-head-text">
+      選んだ人に匿名で感謝のダイヤが送られます
+    </div>
+  </div>
+</ion-header>
+<ion-content>
+  <div class="content-layer">
+    <ul class="all-user-list">
+      <li class="each-user" *ngFor="let user of diamondSelectList">
+        <div class="user-box">
+          <div class="user">
+            <div class="user-image">
+              <img class="img img-circle" src="assets/img/{{user.userProfileImage}}">
+            </div>
+
+            <div class="user-data">
+              <div class="text-box-user-name">
+                <div class="user-name-text">
+                  <p class="user-text">
+                    {{user.userName}}
+                  </p>
+                </div>
+              </div>
+              <div class="text-box-user-position">
+                <div class="user-position">
+                  <p class="position-text">
+                    {{user.userRole}}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</ion-content>
